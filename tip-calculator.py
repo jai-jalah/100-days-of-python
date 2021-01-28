@@ -11,6 +11,6 @@ bill = float(input("How much ya say ya bill was? $"))
 tip = float(input("Mmm, and the tip ya wanna pay on that - 10%, 12%, 15%? "))
 split = float(input("And how many of ya are payin?? "))
 
-result = int(round(bill / split * (1 + tip / 100), 2))
+result = float(round(bill / split * (1 + tip / 100), 2))
 
 print(f"Well here ya go. Each one of ya's gon' have to pay ${result}!")
