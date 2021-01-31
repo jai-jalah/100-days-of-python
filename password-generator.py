@@ -4,13 +4,13 @@ letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
             'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G',
             'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
             'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
 print("Welcome to the PyPassword Generator!")
 nr_letters = int(input("How many letters would you like in your password?\n"))
-nr_symbols = int(input(f"How many symbols would you like?\n"))
 nr_numbers = int(input(f"How many numbers would you like?\n"))
+nr_symbols = int(input(f"How many symbols would you like?\n"))
 
 #Hard Level - Order of characters randomised:
 #e.g. 4 letter, 2 symbol, 2 number = g^2jk8&P
@@ -22,23 +22,32 @@ nr_numbers = int(input(f"How many numbers would you like?\n"))
 # 5. print the password
 import random
 
-letters_ans = []
-symbols_ans = []
-numbers_ans = []
-ans = []
+letter_list = []
+number_list = []
+symbol_list = []
+password_list = []
 
-total = nr_letters + nr_symbols + nr_numbers
+total_chars = nr_letters + nr_numbers + nr_symbols
 
-for letter in range(1, nr_letters + 1):
-    letters_ans.append(letters[random.randint(0, nr_letters - 1)])
+if nr_letters > 0:
+    for letter in range(0, nr_letters + 1):
+        letter_list.append(letters[random.randint(0, 25)])
 
-for symbol in range(1, nr_symbols + 1):
-    symbols_ans.append(symbols[random.randint(0, nr_symbols - 1)])
+if nr_numbers > 0:
+    for number in range(0, nr_numbers + 1):
+        number_list.append(numbers[random.randint(0, 9)])
 
-for number in range(1, nr_numbers + 1):
-    numbers_ans.append(numbers[random.randint(0, nr_numbers - 1)])
+if nr_symbols > 0:
+    for symbol in range(0, nr_symbols + 1):
+        symbol_list.append(symbols[random.randint(0, 8)])
 
-while len(ans) < total:
-    ans.append(letters_ans[random.randint(0, len(letters_ans) - 1)])
-    ans.append(symbols_ans[random.randint(0, len(symbols_ans) - 1)])
-    ans.append(numbers_ans[random.randint(0, len(numbers_ans) - 1)])
+while len(password_list) < total_chars:
+    if len(letter_list) > 0:
+        password_list.append(letter_list[random.randint(0, len(letter_list) - 1)])
+    if len(number_list) > 0:
+        password_list.append(number_list[random.randint(0, len(number_list) - 1)])
+    if len(symbol_list) > 0:
+        password_list.append(symbol_list[random.randint(0, len(symbol_list) - 1)])
+
+password = "".join(password_list)
+print(f"Your new password is: {password}")
