@@ -14,3 +14,9 @@ nr_numbers = int(input(f"How many numbers would you like?\n"))
 
 #Hard Level - Order of characters randomised:
 #e.g. 4 letter, 2 symbol, 2 number = g^2jk8&P
+
+# 1. new variables for letters, symbols, and numbers.
+# 2. for i in nr_letters + 1, selects random letter and adds it to variable.
+# 3. same for nr_symbols and nr_numbers.
+# 4. combine all the variables together into a randomised list and join the list.
+# 5. print the password
