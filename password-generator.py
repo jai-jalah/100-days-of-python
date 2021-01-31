@@ -20,8 +20,6 @@ nr_symbols = int(input(f"How many symbols would you like?\n"))
 # 3. same for nr_symbols and nr_numbers.
 # 4. combine all the variables together into a randomised list and join the list.
 # 5. print the password
-import random
-
 letter_list = []
 number_list = []
 symbol_list = []
