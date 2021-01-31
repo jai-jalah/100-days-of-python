@@ -4,8 +4,8 @@ letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
             'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G',
             'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
             'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
+numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
 print("Welcome to the PyPassword Generator!")
 nr_letters = int(input("How many letters would you like in your password?\n"))
@@ -22,9 +22,23 @@ nr_numbers = int(input(f"How many numbers would you like?\n"))
 # 5. print the password
 import random
 
-letter_ans = []
-symbol_ans = []
-number_ans = []
+letters_ans = []
+symbols_ans = []
+numbers_ans = []
+ans = []
+
+total = nr_letters + nr_symbols + nr_numbers
 
 for letter in range(1, nr_letters + 1):
-    letter_ans.append(letters[random.randint(0, nr_letters - 1)])
+    letters_ans.append(letters[random.randint(0, nr_letters - 1)])
+
+for symbol in range(1, nr_symbols + 1):
+    symbols_ans.append(symbols[random.randint(0, nr_symbols - 1)])
+
+for number in range(1, nr_numbers + 1):
+    numbers_ans.append(numbers[random.randint(0, nr_numbers - 1)])
+
+while len(ans) < total:
+    ans.append(letters_ans[random.randint(0, len(letters_ans) - 1)])
+    ans.append(symbols_ans[random.randint(0, len(symbols_ans) - 1)])
+    ans.append(numbers_ans[random.randint(0, len(numbers_ans) - 1)])
