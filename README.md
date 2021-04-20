@@ -6,7 +6,7 @@
 This is my progression through: https://www.udemy.com/course/100-days-of-code/
 
 ```
-Try out the projects by cloning this project and then running `python3 main.py` in a specific directory, or `python3 file_path`. 
+Try out the projects by cloning this project and then running `python3 main.py` in a specific directory, or `python3 (directory)/main.py`. 
 
 Projects with environment variables will require you to use your own details.
 ```
