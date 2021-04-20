@@ -6,7 +6,9 @@
 This is my progression through: https://www.udemy.com/course/100-days-of-code/
 
 ```
-You can try out the projects by cloning this project and then running `python3 main.py` in a specific directory, or `python3 file_path`. Projects with environment variables will require you to use your own details.
+Try out the projects by cloning this project and then running `python3 main.py` in a specific directory, or `python3 file_path`. 
+
+Projects with environment variables will require you to use your own details.
 ```
 ------------
 The course was really productive and a great way to learn Python. I was guided through concepts and skills every day and then given a challenge at the end. I completed them all (mostly 🙃) by myself; using the solutions afterwards to check my code quality.
