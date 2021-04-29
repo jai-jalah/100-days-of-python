@@ -22,8 +22,17 @@ cookie_pop_up = driver.find_element_by_xpath(
 cookie_pop_up.click()
 
 email_field = driver.find_element_by_id("username")
-# email_field.click()
 email_field.send_keys(EMAIL)
 password_field = driver.find_element_by_id("password")
 password_field.send_keys(PASS)
 password_field.send_keys(Keys.ENTER)
+
+save_button = driver.find_element_by_class_name(
+    "jobs-save-button artdeco-button artdeco-button--3 artdeco-button--secondary"
+)
+job_list = driver.find_elements_by_css_selector(".job-card-container--clickable")
+for job in job_list:
+    job.click()
+    time.sleep(2)
+    save_button.click()
+    time.sleep(2)
