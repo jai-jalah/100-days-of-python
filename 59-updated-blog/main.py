@@ -1,13 +1,23 @@
 from flask import Flask, render_template
 import requests
 
+posts = requests.get("https://api.npoint.io/0067e63917ca7a5034d9").json()
+
 app = Flask(__name__)
 
 
 @app.route("/")
 def home():
-    posts = requests.get("https://api.npoint.io/0067e63917ca7a5034d9").json()
     return render_template("index.html", posts=posts)
+
+
+@app.route("/post/<int:index>")
+def show_post(index):
+    requested_post = None
+    for post in posts:
+        if post["id"] == index:
+            requested_post = post
+    return render_template("post.html", post=requested_post)
 
 
 @app.route("/about")
