@@ -1,12 +1,12 @@
 from flask import Flask, render_template
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
-from wtforms.validators import DataRequired, ValidationError
+from wtforms.validators import DataRequired, ValidationError, Email
 from decouple import config
 
 
 class LoginForm(FlaskForm):
-    email = StringField(label="Email", validators=[DataRequired()])
+    email = StringField(label="Email", validators=[DataRequired(), Email()])
     password = StringField(label="Password", validators=[DataRequired()])
     submit = SubmitField(label="Log In")
 
