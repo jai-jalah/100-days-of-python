@@ -11,7 +11,7 @@ class LoginForm(FlaskForm):
     submit = SubmitField(label="Log In")
 
     def validate_password(FlaskForm, password):
-        if len(password.data) < 8:
+        if len(password.data) < 4:
             raise ValidationError("Password must be at least 8 characters long")
 
 
