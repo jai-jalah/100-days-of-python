@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
-from wtforms.validators import DataRequired
+from wtforms.validators import DataRequired, ValidationError
 from decouple import config
 
 
@@ -9,6 +9,10 @@ class LoginForm(FlaskForm):
     email = StringField(label="Email", validators=[DataRequired()])
     password = StringField(label="Password", validators=[DataRequired()])
     submit = SubmitField(label="Log In")
+
+    def validate_password(FlaskForm, password):
+        if len(password.data) < 8:
+            raise ValidationError("Password must be at least 8 characters long")
 
 
 app = Flask(__name__)
