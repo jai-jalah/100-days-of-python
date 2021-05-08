@@ -17,6 +17,7 @@
 
 	  <table class="table">
           {% for cafe in cafes %}
+          <tbody>
             <th scope="row">{{ cafe[0] }}</th>
             {% if cafe[1][0:4] == "http" %}
               <td><a href="{{ cafe[1] }}">Maps Link</a></td>
@@ -28,6 +29,7 @@
                 {{ cafe[i] }}
               </td>
               {% endfor %}
+          </tbody>
           {% endfor %}
   	  </table>
 
