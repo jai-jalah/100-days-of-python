@@ -10,8 +10,18 @@ def home():
     return render_template("index.html")
 
 
-@app.route("/add")
+@app.route("/add", methods=["GET", "POST"])
 def add():
+    if request.method == "POST":
+        new_book = {
+            "title": request.form["book-title"],
+            "author": request.form["author"],
+            "rating": request.form["rating"],
+        }
+        all_books.append(book_details)
+        # print(all_books)
+        return redirect(url_for("home"))
+
     return render_template("add.html")
 
 
