@@ -20,7 +20,8 @@ db.create_all()
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    all_books = db.session.query(Book).all()
+    return render_template("index.html", books=all_books)
 
 
 @app.route("/add", methods=["GET", "POST"])
