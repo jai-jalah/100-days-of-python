@@ -29,3 +29,9 @@ class Book(db.Model):
 
 
 db.create_all()
+
+
+new_book = Book(id=1, title="Harry Potter", author="J. K. Rowling", rating=9.3)
+
+db.session.add(new_book)
+db.session.commit()
