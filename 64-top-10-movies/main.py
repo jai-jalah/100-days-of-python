@@ -29,23 +29,42 @@ class Movie(db.Model):
 # db.create_all()
 
 # new_movie = Movie(
-#     title="Grand Budapest Hotel",
-#     year=2014,
-#     description="A writer encounters the owner of an aging high-class hotel, who tells him of his early years serving as a lobby boy in the hotel's glorious years under an exceptional concierge.",
+#     title="The Godfather",
+#     year=1972,
+#     description="An organized crime dynasty's aging patriarch transfers control of his clandestine empire to his reluctant son.",
 #     rating=9.9,
-#     ranking=2,
-#     review="Stunning aesthetic with a hysterical, but touching and suspenseful, story",
-#     img_url="https://m.media-amazon.com/images/M/MV5BMzM5NjUxOTEyMl5BMl5BanBnXkFtZTgwNjEyMDM0MDE@._V1_UX182_CR0,0,182,268_AL_.jpg",
+#     ranking=1,
+#     review="Just. Ridiculously. Great.",
+#     img_url="https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UY268_CR3,0,182,268_AL_.jpg",
 # )
 
 # db.session.add(new_movie)
 # db.session.commit()
 
 
+class RateMovieForm(FlaskForm):
+    rating = StringField("Your Rating Out of 10 e.g. 7.5")
+    review = StringField("Your Review")
+    submit = SubmitField("Done")
+
+
 @app.route("/")
 def home():
     movies = Movie.query.all()
     return render_template("index.html", movies=movies)
+
+
+@app.route("/edit", methods=["GET", "POST"])
+def edit():
+    form = RateMovieForm()
+    movie_id = request.args.get("id")
+    movie = Movie.query.get(movie_id)
+    if form.validate_on_submit():
+        movie.rating = float(form.rating.data)
+        movie.review = form.review.data
+        db.session.commit()
+        return redirect(url_for("home"))
+    return render_template("edit.html", movie=movie, form=form)
 
 
 if __name__ == "__main__":
