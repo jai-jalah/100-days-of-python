@@ -26,7 +26,20 @@ class Movie(db.Model):
     img_url = db.Column(db.String(250), nullable=False)
 
 
-db.create_all()
+# db.create_all()
+
+# new_movie = Movie(
+#     title="Grand Budapest Hotel",
+#     year=2014,
+#     description="A writer encounters the owner of an aging high-class hotel, who tells him of his early years serving as a lobby boy in the hotel's glorious years under an exceptional concierge.",
+#     rating=9.9,
+#     ranking=2,
+#     review="Stunning aesthetic with a hysterical, but touching and suspenseful, story",
+#     img_url="https://m.media-amazon.com/images/M/MV5BMzM5NjUxOTEyMl5BMl5BanBnXkFtZTgwNjEyMDM0MDE@._V1_UX182_CR0,0,182,268_AL_.jpg",
+# )
+
+# db.session.add(new_movie)
+# db.session.commit()
 
 
 @app.route("/")
