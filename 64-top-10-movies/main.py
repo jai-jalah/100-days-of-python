@@ -42,6 +42,11 @@ class Movie(db.Model):
 # db.session.commit()
 
 
+class AddMovieForm(FlaskForm):
+    title = StringField("Movie Title", validators=[DataRequired()])
+    submit = SubmitField("Add Movie")
+
+
 class RateMovieForm(FlaskForm):
     rating = StringField("Your Rating Out of 10 e.g. 7.5")
     review = StringField("Your Review")
@@ -52,6 +57,12 @@ class RateMovieForm(FlaskForm):
 def home():
     movies = Movie.query.all()
     return render_template("index.html", movies=movies)
+
+
+@app.route("/add", methods=["GET", "POST"])
+def add():
+    form = AddMovieForm()
+    return render_template("add.html", form=form)
 
 
 @app.route("/edit", methods=["GET", "POST"])
