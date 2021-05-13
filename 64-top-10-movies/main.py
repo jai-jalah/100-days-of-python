@@ -7,7 +7,7 @@ from wtforms.validators import DataRequired
 import requests
 from decouple import config
 
-MOVIE_API_KEY = config("MOVIE_API_KEY")
+MOVIE_DB_API_KEY = config("MOVIE_DB_API_KEY")
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "8BYkEfBA6O6donzWlSihBXox7C0sKR6b"
@@ -69,13 +69,32 @@ def add():
         movie_title = form.title.data
         res = requests.get(
             "https://api.themoviedb.org/3/search/movie?",
-            params={"api_key": MOVIE_API_KEY, "query": movie_title},
+            params={"api_key": MOVIE_DB_API_KEY, "query": movie_title},
         )
         res.raise_for_status()
         movie_list = res.json()["results"]
-        print(movie_list)
+        # print(movie_list)
         return render_template("select.html", movies=movie_list)
     return render_template("add.html", form=form)
+
+
+@app.route("/find")
+def find_movie():
+    movie_api_id = request.args.get("id")
+    if movie_api_id:
+        movie_api_url = f"https://api.themoviedb.org/3/movie/{movie_api_id}"
+        res = requests.get(movie_api_url, params={"api_key": MOVIE_DB_API_KEY})
+        movie_info = res.json()
+        # print(movie_info)
+        new_movie = Movie(
+            title=movie_info["title"],
+            year=movie_info["release_date"].split("-")[0],
+            img_url=f"https://image.tmdb.org/t/p/w500/{movie_info['poster_path']}",
+            description=movie_info["overview"],
+        )
+        db.session.add(new_movie)
+        db.session.commit()
+        return redirect(url_for("home"))
 
 
 @app.route("/edit", methods=["GET", "POST"])
