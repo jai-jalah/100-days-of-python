@@ -94,7 +94,7 @@ def find_movie():
         )
         db.session.add(new_movie)
         db.session.commit()
-        return redirect(url_for("home"))
+        return redirect(url_for("edit", id=new_movie.id))
 
 
 @app.route("/edit", methods=["GET", "POST"])
