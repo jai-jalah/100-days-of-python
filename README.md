@@ -15,6 +15,7 @@ I also built a few Django projects for my own practice! You can check them out a
 - [Password Generator Site](https://github.com/jai-jk/django-password-generator)<br>
 - [Practice Portfolio Site](https://github.com/jai-jk/django-practice-portfolio)<br>
 - [Todo Woo Site](https://github.com/jai-jk/django-todo-woo)
+- [Django-GraphQL-Vue Blog](https://github.com/jai-jk/Django-GraphQL-Vue-Blog)
 
 ---
 
