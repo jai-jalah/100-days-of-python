@@ -1,5 +1,7 @@
 # 100-days-of-python
 
+<a href="https://codeclimate.com/github/jai-jk/100-days-of-python/maintainability"><img src="https://api.codeclimate.com/v1/badges/6ee8c754b3ff4cdf5d6b/maintainability" /></a>
+
 100 Python projects - from Beginner to Advanced <br>
 [Syllabus](Syllabus.pdf)
 
